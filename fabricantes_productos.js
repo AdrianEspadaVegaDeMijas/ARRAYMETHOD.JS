@@ -68,9 +68,13 @@ fabricantes.sort( (a, b) => {
 // 12. Lista el nombre de todos los productos del fabricante cuyo código de fabricante es igual a 2.
 // 13. Lista el nombre de los productos que tienen un precio menor o igual a 120€.
 // 14. Lista los productos que tienen un precio mayor o igual a 400€.
+
+productos.filter(p => p.precio > 80 && p.precio <= 300)
+            .forEach(p => console.log(p));
+
 // 15. Lista todos los productos que tengan un precio entre 80€ y 300€.
 // 16. Lista todos los productos que tengan un precio mayor que 200€ y que el código de fabricante sea igual a 6.
-// 17. Lista todos los productos donde el código de fabricante sea 1, 3 o 5 utilizando un Set de codigos de fabricantes para filtrar.
+// 17. Lista todoslos productos donde el código de fabricante sea 1, 3 o 5 utilizando un Set de codigos de fabricantes para filtrar.
 // 18. Lista el nombre y el precio de los productos en céntimos.
 // 19. Lista los nombres de los fabricantes cuyo nombre empiece por la letra S
 // 20. Devuelve una lista con los productos que contienen la cadena Portátil en el nombre.
