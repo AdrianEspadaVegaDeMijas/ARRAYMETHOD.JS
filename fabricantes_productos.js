@@ -50,13 +50,13 @@ pro.forEach( x => console.log(x));
 
 fabricantes.sort( (a, b) => {
                 if (a.nombre > b.nombre )   {
-                    return 1;
+                    return -1;
                 }
                 if (a.nombre == b.nombre )   {
                     return 0;
                 }
                 if (a.nombre  < b.nombre )   {
-                    return -1;
+                    return 1;
                 }
             }).forEach(x => console.log(x));
 
