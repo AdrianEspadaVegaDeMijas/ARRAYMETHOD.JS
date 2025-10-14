@@ -36,7 +36,12 @@ arrNomPre.forEach( x => console.log(x));
 
 // 2. Devuelve una lista de Producto completa con el precio de euros convertido a dólares .
 
-productos.map(p => p.precio * 1.18)
+let pro = productos.map(p => {
+    return{nombre: p.nombre , precio: (p.precio * 1.18)};
+});
+
+pro.forEach( x => console.log(x));
+
 
 // 3. Lista los nombres y los precios de todos los productos, convirtiendo los nombres a mayúscula.
 // 4. Lista el nombre de todos los fabricantes y a continuación en mayúsculas los dos primeros caracteres del nombre del fabricante.
