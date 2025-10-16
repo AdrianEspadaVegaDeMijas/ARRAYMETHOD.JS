@@ -100,6 +100,42 @@ productos.filter(p => p.precio > 80 && p.precio <= 300)
 // 40. Muestra el precio máximo, precio mínimo, precio medio y el número total de productos de los fabricantes que tienen un precio medio superior a 200€. No es necesario mostrar el nombre del fabricante, con el código del fabricante es suficiente.
 // 41. Devuelve un listado con los nombres de los fabricantes que tienen 2 o más productos.
 // 42. Devuelve un listado con los nombres de los fabricantes y el número de productos que tiene cada uno con un precio superior o igual a 220 €. Ordenado de mayor a menor número de productos.
+
+//OPCION 1 por productos mediante Group By
+let arrJoinFabs = productos
+                        .map(p => {
+                            return {
+                                codigo: p.codigo,
+                                precio: p.precio,
+                                nomebreFabricante: fabricantes.find(f => f.codigo === p.codigo_fabricante).nombre
+                            }
+                        });
+
+let map = Map.groupBy(arrJoinFabs, prodFab => prodFab.nomebreFabricante);
+
+console.log(map)
+
+let arrFabContProds = Array.from(map)
+                        .map( ([key, value]) => [key, value.length])
+                        .sort( (arrKeyValueA, arrKeyValueB) => {
+                            if (arrKeyValueB[1] > arrKeyValueA[1]) {
+                                return 1;
+                            } else if (arrKeyValueB[1] == arrKeyValueA[1]) {
+                                return 0;
+                            } else {
+                                return -1;
+                            }   
+                        });
+
+console.log(arrFabContProds);
+
+//OPCION 2 por fabricantes
+
+let arrObjFabContProds = fabricamtes.maop( f => {
+    return { nombre: f.nombre,
+                numProds: productos.filter( p => p.codigo_fabricante === f.codigo && p.precio >= 220).length};
+            });
+
 // 43. Devuelve un listado con los nombres de los fabricantes donde la suma del precio de todos sus productos es superior a 1000 €
 // 44. Devuelve un listado con los nombres de los fabricantes donde la suma del precio de todos sus productos es superior a 1000 €. Ordenado de menor a mayor por cuantía de precio de los productos.
 // 45. Devuelve un listado con el nombre del producto más caro que tiene cada fabricante. El resultado debe tener tres columnas: nombre del producto, precio y nombre del fabricante. El resultado tiene que estar ordenado alfabéticamente de menor a mayor por el nombre del fabricante.
